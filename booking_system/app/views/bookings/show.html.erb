@@ -1,15 +1,24 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+<strong>Description:</strong>
+<%= @booking.description %>
+</p>
 
-  <% @booking.each do |booking| %>
-  <tr>
-    <strong>Bookings:</strong>
-    <td><%= booking.date %></td>
-    <td><%= booking.start %></td>
-    <td><%= booking.end %></td>
-    <td><%= booking.description %></td>
-  </tr>
-  <% end %>
+<p>
+<strong>Date:</strong>
+<%= @booking.date %>
+</p>
+
+<p>
+<strong>Start time:</strong>
+<%= @booking.start %>
+</p>
+
+<p>
+<strong>End time:</strong>
+<%= @booking.end %>
+</p>
 
 <%= link_to 'Edit', edit_booking_path(@booking) %> |
 <%= link_to 'Back', bookings_path %>
