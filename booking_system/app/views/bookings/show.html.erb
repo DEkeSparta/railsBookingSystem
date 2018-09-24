@@ -1,4 +1,15 @@
 <p id="notice"><%= notice %></p>
 
+
+  <% @booking.each do |booking| %>
+  <tr>
+    <strong>Bookings:</strong>
+    <td><%= booking.date %></td>
+    <td><%= booking.start %></td>
+    <td><%= booking.end %></td>
+    <td><%= booking.description %></td>
+  </tr>
+  <% end %>
+
 <%= link_to 'Edit', edit_booking_path(@booking) %> |
 <%= link_to 'Back', bookings_path %>
