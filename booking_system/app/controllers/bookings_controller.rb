@@ -5,6 +5,11 @@ class BookingsController < ApplicationController
   # GET /bookings.json
   def index
     @bookings = Booking.all
+    if #params[:booking]
+      redirect_to "/bookings/new/f=#{params[:booking]["start_time(4i)"]}-#{params[:booking]["start_time(5i)"]}&l=#{params[:booking]["end_time(4i)"]}-#{params[:booking]["end_time(5i)"]}&d=#{params[:booking][:date]}"
+    else
+      redirect_to "/rooms/#{params[:booking]}"
+    end
   end
 
   # GET /bookings/1
@@ -69,8 +74,12 @@ class BookingsController < ApplicationController
       @booking = Booking.find(params[:id])
     end
 
+    def room_search_params
+      params.require(:booking).permit(:date, :start_time, :end_time)
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.require(:booking).permit(:date, :start_time, :end_time, :room_id, :description)
+      params.require(:booking).permit(:date, :start, :end, :room_id, :description)
     end
 end

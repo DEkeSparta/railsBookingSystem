@@ -1,0 +1,14 @@
+<h1>New Booking</h1>
+
+<div class="searchBox">
+  <ul>
+    <% @rooms.each do |r| %>
+      <% date = Date.new(2018,9,25)
+          startT = Time.at(12*3600)
+          endT = Time.at(13*3600) %>
+      <% if r.isFree date, startT, endT %>
+        <li><%= r.name %>, <%= r.bookings.first.start.strftime( "%H%M" ) %>, <%= r.bookings.first.end.strftime( "%H%M" ) %>, <%= r.bookings.first.date.strftime( "%H%M" ) %>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
