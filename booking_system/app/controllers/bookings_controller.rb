@@ -15,6 +15,8 @@ class BookingsController < ApplicationController
   # GET /bookings/new
   def new
     @booking = Booking.new
+    @bookings = Booking.all
+    @rooms = Room.all
   end
 
   # GET /bookings/1/edit
@@ -69,6 +71,6 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.fetch(:booking, {})
+      params.require(:booking).permit(:date, :start_time, :end_time, :room_id, :description)
     end
 end

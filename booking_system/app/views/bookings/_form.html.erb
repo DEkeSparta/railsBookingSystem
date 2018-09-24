@@ -11,6 +11,34 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_field :date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_time %>
+    <%= form.time_select :start_time ,:minute_step => 30, :ampm => false %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_time %>
+    <%= form.time_select :end_time ,:minute_step => 30, :ampm => false %>
+  </div>
+
+  <div class="searchBox">
+    <ul>
+      <% @rooms.each do |r| %>
+        <% date = Date.new(2018,9,25)
+            startT = Time.at(12*3600)
+            endT = Time.at(13*3600) %>
+        <% if r.isFree date, startT, endT %>
+          <li><%= r.name %>, <%= r.bookings.first.start.strftime( "%H%M" ) %>, <%= r.bookings.first.end.strftime( "%H%M" ) %>, <%= r.bookings.first.date.strftime( "%H%M" ) %>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
