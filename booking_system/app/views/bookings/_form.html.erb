@@ -11,24 +11,24 @@
     </div>
   <% end %>
 
-<div class='forms'>
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.date_field :date %>
-  </div>
+  <div class='forms'>
+    <div class="field">
+      <%= form.label :date %>
+      <%= form.date_field :date, {:class => 'form-control'} %>
+    </div>
+    <br>
+    <div class="field">
+      <%= form.label :start_time %>
+      <%= form.time_select :start_time ,:minute_step => 30, :ampm => false, :class => 'form-control' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :start_time %>
-    <%= form.time_select :start_time ,:minute_step => 30, :ampm => false %>
+    <div class="field">
+      <%= form.label :end_time %>&nbsp
+      <%= form.time_select :end_time ,:minute_step => 30, :ampm => false, :class => 'form-control' %>
+    </div>
+    <br>
+    <div class="actions field">
+      <%= form.submit "Submit", method: :search , :class => 'btn btn-lg btn-primary btn-block btn-signin' %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :end_time %>&nbsp
-    <%= form.time_select :end_time ,:minute_step => 30, :ampm => false %>
-  </div>
-
-  <div class="actions field">
-    <%= form.submit "Submit", method: :search%>
-  </div>
-</div>
 <% end %>
