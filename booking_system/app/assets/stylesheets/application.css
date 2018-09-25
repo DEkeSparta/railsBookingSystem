@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+
+.navbar-brand>img {
+  height: 50px;
+  width: auto;
+}
