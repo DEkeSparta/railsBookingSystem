@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   resources :bookings
   resources :rooms
 
+  get '/bookings/new/&f=:start_time&l=:end_time&d=:date', to: 'bookings#results'
+
   root to: "bookings#index"
 end

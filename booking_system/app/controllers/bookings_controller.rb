@@ -5,8 +5,8 @@ class BookingsController < ApplicationController
   # GET /bookings.json
   def index
     @bookings = Booking.all
-    if #params[:booking]
-      redirect_to "/bookings/new/f=#{params[:booking]["start_time(4i)"]}-#{params[:booking]["start_time(5i)"]}&l=#{params[:booking]["end_time(4i)"]}-#{params[:booking]["end_time(5i)"]}&d=#{params[:booking][:date]}"
+    if params[:booking]!=nil
+      redirect_to "/bookings/new/&f=#{params[:booking]["start_time(4i)"]}#{params[:booking]["start_time(5i)"]}&l=#{params[:booking]["end_time(4i)"]}#{params[:booking]["end_time(5i)"]}&d=#{params[:booking][:date]}"
     else
       redirect_to "/rooms/#{params[:booking]}"
     end
@@ -22,6 +22,28 @@ class BookingsController < ApplicationController
     @booking = Booking.new
     @bookings = Booking.all
     @rooms = Room.all
+  end
+
+  def results
+    @rooms = Room.all
+    @booking = Booking.new
+    @bookings = Booking.all
+
+    @criteria = request.path.split("/").last
+    @criteriaArr = @criteria.split(/&\w=/)
+
+    @start_time = @criteriaArr[1]
+    @end_time = @criteriaArr[2]
+    @date = @criteriaArr[3]
+
+    @available_rooms = []
+
+    @rooms.each do |r|
+      if r.isFree @date, @start_time, @end_time
+        @available_rooms.push r
+      end
+    end
+
   end
 
   # GET /bookings/1/edit
