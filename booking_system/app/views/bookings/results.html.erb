@@ -45,7 +45,7 @@
           <%= form.hidden_field :end, :value => Time.at(@end_time[0...2].to_i*3600 + @end_time[2...4].to_i*60) %>
 
           <div class="actions">
-            <%= form.submit "Create Booking"%>
+            <%= form.submit "Create Booking", {:class => 'btn btn-lg btn-primary btn-block btn-signin' } %>
           </div>
         <% end %>
 
