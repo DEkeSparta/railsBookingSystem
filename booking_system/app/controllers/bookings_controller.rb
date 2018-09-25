@@ -7,8 +7,6 @@ class BookingsController < ApplicationController
     @bookings = Booking.all
     if params[:booking]!=nil
       redirect_to "/bookings/new/&f=#{params[:booking]["start_time(4i)"]}#{params[:booking]["start_time(5i)"]}&l=#{params[:booking]["end_time(4i)"]}#{params[:booking]["end_time(5i)"]}&d=#{params[:booking][:date]}"
-    else
-      redirect_to "/rooms/#{params[:booking]}"
     end
   end
 
