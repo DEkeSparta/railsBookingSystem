@@ -17,19 +17,19 @@
       <td><%= time %></td>
       <% @Rooms.each do |room| %>
         <% if room.isFree '2018-10-01', time, @times[i+1]  %>
-          <td class="bg-success"></td>
+          <td onclick="location.href='/bookings/new';"></td>
         <% else %>
-          <td class="bg-primary"> 
+          <td class="bg-warning" onclick="location.href='/bookings/<%= room.bookings.all.first.id %>';">
             <% text = room.bookings.all.first.description %>
             <% if text.length <= 15 %>
               <%= text %>
             <% else %>
               <%= "#{text[0...12]}..." %>
-            <% end %>  
+            <% end %>
           </td>
         <% end %>
       <% end %>
-    </tr>
+    </tr> 
     <% end %>
   </table>
 </div>

@@ -35,3 +35,13 @@
   height: 50px;
   width: auto;
 }
+
+table.table th, table.table td  {
+    text-align: center;
+    border: 1px solid lightgrey;
+    width: 10vw;
+}
+
+td:hover {
+    background-color: lightgrey;
+}
