@@ -32,7 +32,7 @@
 
     <div class="field">
       <!-- <%= form.label :available_rooms %> -->
-      <%= form.collection_select :room_id, @available_rooms, :id, :name, {}, {multiple: true} %>
+      <%= form.collection_select :room_id, @available_rooms, :id, :name %>
     </div>
 
     <div class="field">
