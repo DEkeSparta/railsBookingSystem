@@ -14,6 +14,8 @@
  *= require_self
  */
 
-.floatLeft{
-  float: right;
+
+.navbar-brand>img {
+  height: 50px;
+  width: auto;
 }
