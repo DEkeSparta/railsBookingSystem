@@ -1,15 +1,20 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+
 
   # GET /bookings
   # GET /bookings.json
   def index
+    @times = ['9:00','9:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','16:00','16:30','17:00']
+    @Rooms = Room.all
     @bookings = Booking.all
   end
 
   # GET /bookings/1
   # GET /bookings/1.json
   def show
+
   end
 
   # GET /bookings/new
@@ -69,6 +74,7 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.fetch(:booking, {})
+      # params.fetch(:booking, {}) Ayman commented this out and added below line
+      params.require(:booking).permit(:description, :booking_id)
     end
 end
