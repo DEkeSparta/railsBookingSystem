@@ -6,12 +6,12 @@
 <%= form_with(model: @booking, local: true) do |form| %>
 
 <div class="field">
-  <%= form.label :description %>
-  <%= form.text_field :description, id: :description %>
+  <%= form.label :description %><br>
+  <%= form.text_field :description, id: :description, class: "form-control" %>
 </div>
-
+<br>
 <div class="actions">
-  <%= form.submit %>
+  <%= form.submit "Update Booking" , {:class => 'btn btn-lg btn-primary btn-block btn-signin'} %>
 </div>
 
   <% end %>
