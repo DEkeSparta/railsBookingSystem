@@ -14,29 +14,31 @@
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand">Sparta Global</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+
+      <%= link_to image_tag("SpartaLogo.png", alt: "logo"), '/', class: 'navbar-brand' %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
+      <div class="collapse navbar-collapse" id="navbarText">
+        <div class="navbar-nav mr-auto">
           <% if user_signed_in? %>
-            <a class="nav-item nav-link"><%= link_to "Booking(s) List", bookings_path%></a>
-            <a class="nav-item nav-link"><%= link_to "New Booking", new_booking_path%></a>
-            <a class="nav-item nav-link"><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></a>
-            <a class="nav-item nav-link"><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></a>
-            <span class="align-right">Logged in as <strong><%= current_user.email %></strong>.</span>
-          <!-- <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a> -->
+          <a class="nav-link"><%= link_to "Booking(s) List", bookings_path%></a>
+          <a class="nav-link"><%= link_to "New Booking", new_booking_path%></a>
+          <a class="nav-link"><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></a>
+          <a class="nav-link"><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></a>
           <% else %>
-            <a class="nav-item nav-link"><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %></a>
-            <a class="nav-item nav-link"><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></a>
-            <!-- <a class="nav-item nav-link" href="#">Pricing</a> -->
-          <%end%>
+          <a class="nav-link"><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %></a>
+          <a class="nav-link"><%= link_to "Login", new_user_session_path, :class => 'navbar-link' %></a>
+          <% end %>
         </div>
+        <span class="navbar-text">
+          <% if user_signed_in? %>
+          <a class="nav-link">Logged in as <strong><%= current_user.email %></strong></a>
+          <% end %>
+        </span>
       </div>
     </nav>
 
-    <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
 
