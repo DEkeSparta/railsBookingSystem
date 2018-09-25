@@ -15,5 +15,7 @@
 
   <% end %>
 
+
 <%= link_to 'Show', @booking %> |
+<%= link_to 'Destroy', @booking, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', bookings_path %>
