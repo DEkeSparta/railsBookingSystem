@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+<div class='forms'>
   <div class="field">
     <%= form.label :date %>
     <%= form.date_field :date %>
@@ -22,11 +23,12 @@
   </div>
 
   <div class="field">
-    <%= form.label :end_time %>
+    <%= form.label :end_time %>&nbsp
     <%= form.time_select :end_time ,:minute_step => 30, :ampm => false %>
   </div>
 
-  <div class="actions">
+  <div class="actions field">
     <%= form.submit "Submit", method: :search%>
   </div>
+</div>
 <% end %>
