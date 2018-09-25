@@ -15,3 +15,5 @@ Room.create(name: 'Pacman', capacity: 8, details: 'a nice room')
 Room.create(name: 'Office', capacity: 8, details: 'a nice room')
 
 Booking.create(room_id: 1, description: 'Sparta Standup', date: "2018-10-01", start: "2000-01-01 13:30", end: "2000-01-01 15:00")
+
+User.create(email: 'kescrader@spartaglobal.com', password: 'password')
