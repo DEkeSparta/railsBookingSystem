@@ -4,6 +4,8 @@ class BookingsController < ApplicationController
   # GET /bookings
   # GET /bookings.json
   def index
+    @times = ['9:00','9:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','16:00','16:30','17:00']
+    @Rooms = Room.all
     @bookings = Booking.all
   end
 
