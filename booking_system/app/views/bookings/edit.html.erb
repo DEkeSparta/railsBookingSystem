@@ -1,6 +1,21 @@
 <h1>Editing Booking</h1>
 
-<%= render 'form', booking: @booking %>
+<!-- <%= render 'form', booking: @booking %> -->
+
+<%= form_with(model: @booking, local: true) do |form| %>
+
+<div class="field">
+  <%= form.label :description %>
+  <%= form.text_field :description, id: :description %>
+</div>
+
+<div class="actions">
+  <%= form.submit %>
+</div>
+
+  <% end %>
+
 
 <%= link_to 'Show', @booking %> |
+<%= link_to 'Destroy', @booking, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', bookings_path %>
