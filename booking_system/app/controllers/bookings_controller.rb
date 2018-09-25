@@ -1,9 +1,13 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+
 
   # GET /bookings
   # GET /bookings.json
   def index
+    @times = ['9:00','9:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','16:00','16:30','17:00']
+    @Rooms = Room.all
     @bookings = Booking.all
     if params[:booking]!=nil
       redirect_to "/bookings/new/&f=#{params[:booking]["start_time(4i)"]}#{params[:booking]["start_time(5i)"]}&l=#{params[:booking]["end_time(4i)"]}#{params[:booking]["end_time(5i)"]}&d=#{params[:booking][:date]}"
@@ -13,6 +17,7 @@ class BookingsController < ApplicationController
   # GET /bookings/1
   # GET /bookings/1.json
   def show
+
   end
 
   # GET /bookings/new
@@ -51,7 +56,7 @@ class BookingsController < ApplicationController
   # POST /bookings
   # POST /bookings.json
   def create
-    @booking = Booking.new(booking_params)
+    @booking = Booking.new(new_booking_params)
 
     respond_to do |format|
       if @booking.save
@@ -68,7 +73,7 @@ class BookingsController < ApplicationController
   # PATCH/PUT /bookings/1.json
   def update
     respond_to do |format|
-      if @booking.update(booking_params)
+      if @booking.update(update_booking_params)
         format.html { redirect_to @booking, notice: 'Booking was successfully updated.' }
         format.json { render :show, status: :ok, location: @booking }
       else
@@ -99,7 +104,11 @@ class BookingsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def booking_params
+    def new_booking_params
       params.require(:booking).permit(:date, :start, :end, :room_id, :description)
+    end
+
+    def update_booking_params
+      params.require(:booking).permit(:description, :booking_id)
     end
 end
