@@ -9,9 +9,35 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+
+
   <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand">Sparta Global</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <% if user_signed_in? %>
+            <a class="nav-item nav-link"><%= link_to "Booking(s) List", bookings_path%></a>
+            <a class="nav-item nav-link"><%= link_to "New Booking", new_booking_path%></a>
+            <a class="nav-item nav-link"><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></a>
+            <a class="nav-item nav-link"><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></a>
+            <span class="align-right">Logged in as <strong><%= current_user.email %></strong>.</span>
+          <!-- <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a> -->
+          <% else %>
+            <a class="nav-item nav-link"><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %></a>
+            <a class="nav-item nav-link"><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></a>
+            <!-- <a class="nav-item nav-link" href="#">Pricing</a> -->
+          <%end%>
+        </div>
+      </div>
+    </nav>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+
 
     <%= yield %>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
