@@ -38,20 +38,14 @@
     <tr>
       <td><%= time %></td>
       <% @Rooms.each do |room| %>
-<<<<<<< HEAD
         <% if room.isFree params[:date], time, @times[i+1]  %>
-        <% if current_user.present? %>
-          <td onclick="location.href='/bookings/new';"></td>
-=======
-        <% if room.isFree '2018-10-01', time, @times[i+1]  %>
           <% if current_user.present? %>
             <td onclick="location.href='/bookings/new';"></td>
           <% else %>
             <td></td>
           <% end %>
->>>>>>> dev
         <% else %>
-          <% b_id = room.findBooking('2018-10-01', time, @times[i+1]) %>
+          <% b_id = room.findBooking(params[:date], time, @times[i+1]) %>
           <% this_booking = room.bookings.all.find(b_id) %>
           <td class="bg-warning" onclick="location.href='/bookings/<%= this_booking.id %>';">
             <% text = this_booking.description %>
