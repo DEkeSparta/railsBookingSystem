@@ -10,7 +10,7 @@
     <div class="actions field">
       <%= form.submit "Select", method: :reload , :class => 'btn btn-lg btn-primary btn-signin date' %>
     </div>
-    <h3> <%= form.label params[:date] %> </h3>
+    <h3> <%= form.label @date %> </h3>
     <% end %>
   </div>
   </div>
@@ -30,14 +30,14 @@
     <tr>
       <td><%= time %></td>
       <% @Rooms.each do |room| %>
-        <% if room.isFree params[:date], time, @times[i+1]  %>
+        <% if room.isFree @date, time, @times[i+1]  %>
           <% if current_user.present? %>
             <td class="clickable" onclick="location.href='/bookings/new';"></td>
           <% else %>
             <td class="clickable"></td>
           <% end %>
         <% else %>
-          <% b_id = room.findBooking(params[:date], time, @times[i+1]) %>
+          <% b_id = room.findBooking(@date, time, @times[i+1]) %>
           <% this_booking = room.bookings.all.find(b_id) %>
           <td class="bg-warning clickable" onclick="location.href='/bookings/<%= this_booking.id %>';">
             <% text = this_booking.description %>
