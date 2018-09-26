@@ -3,8 +3,9 @@
 <br>
 
 
-
-<%= render 'form', booking: @booking %>
+<% if current_user.present? %>
+    <%= render 'form', booking: @booking %>
+<% end %>
 
 <%= link_to 'Back', bookings_path %>
 </div>
