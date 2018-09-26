@@ -1,6 +1,6 @@
 <div class="container">
     <div class="card card-container">
-      <h1>New Booking</h1>  
+      <h1 class="text-center">New Booking</h1>  
       <div class="searchBox">
         <h3>Your input</h3>
 
@@ -34,7 +34,7 @@
             <%= form.label :available_rooms %><br>
             <%= form.collection_select :room_id, @available_rooms, :id, :name, :class => 'form-control' %>
           </div>
-          <br>  
+          <br>
           <div class="field">
               <%= form.label :description %><br>
               <%= form.text_field :description, {:class => 'form-control'} %>
