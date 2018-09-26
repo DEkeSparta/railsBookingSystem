@@ -75,6 +75,7 @@ table.table th, table.table td  {
 
 .date {
   width: 175px;
+  margin:auto;
 }
 
 #booking_date_select {
