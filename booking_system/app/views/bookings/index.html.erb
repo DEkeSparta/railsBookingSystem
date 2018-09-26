@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1 class="text-center">Bookings</h1>
+<h1 class="text-center">Room Allocation System</h1>
 <br>
 <br>
 <div class="col-md-12 table-responsive">
@@ -17,14 +17,16 @@
       <td><%= time %></td>
       <% @Rooms.each do |room| %>
         <% if room.isFree '2018-10-01', time, @times[i+1]  %>
-        <% if current_user.present? %>
-          <td onclick="location.href='/bookings/new';"></td>
+          <% if current_user.present? %>
+            <td onclick="location.href='/bookings/new';"></td>
+          <% else %>
+            <td></td>
+          <% end %>
         <% else %>
-          <td></td>
-        <% end %>
-        <% else %>
-          <td class="bg-warning" onclick="location.href='/bookings/<%= room.bookings.all.first.id %>';">
-            <% text = room.bookings.all.first.description %>
+          <% b_id = room.findBooking('2018-10-01', time, @times[i+1]) %>
+          <% this_booking = room.bookings.all.find(b_id) %>
+          <td class="bg-warning" onclick="location.href='/bookings/<%= this_booking.id %>';">
+            <% text = this_booking.description %>
             <% if text.length <= 15 %>
               <%= text %>
             <% else %>
@@ -33,11 +35,9 @@
           </td>
         <% end %>
       <% end %>
-    </tr> 
+    </tr>
     <% end %>
   </table>
 </div>
 
 <br>
-
-<%= link_to 'New Booking', new_booking_path %>
