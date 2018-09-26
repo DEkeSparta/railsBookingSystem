@@ -11,6 +11,11 @@ class BookingsController < ApplicationController
     if params[:booking]!=nil
       redirect_to "/bookings/new/&f=#{params[:booking]["start_time(4i)"]}#{params[:booking]["start_time(5i)"]}&l=#{params[:booking]["end_time(4i)"]}#{params[:booking]["end_time(5i)"]}&d=#{params[:booking][:date]}"
     end
+    if params[:date].blank?
+      @date = Date.today.strftime
+    else
+      @date = params[:date]
+    end
   end
 
   # GET /bookings/1
@@ -109,10 +114,10 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def new_booking_params
-      params.require(:booking).permit(:date, :start, :end, :room_id, :description)
+      params.require(:booking).permit(:date, :start, :end, :room_id, :description, :category)
     end
 
     def update_booking_params
-      params.require(:booking).permit(:description, :booking_id)
+      params.require(:booking).permit(:description, :category, :booking_id)
     end
 end

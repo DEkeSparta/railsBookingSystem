@@ -6,18 +6,23 @@
 </h1>
 
 <p>
+<strong>Category:</strong>
+<%= @booking.category %>
+</p>
+
+<p>
 <strong>Date:</strong>
-<%= @booking.date %>
+<%= @booking.date.strftime("%A, %-d %B %Y") %>
 </p>
 
 <p>
 <strong>Start time:</strong>
-<%= @booking.start %>
+<%= @booking.start.strftime("%H:%M") %>
 </p>
 
 <p>
 <strong>End time:</strong>
-<%= @booking.end %>
+<%= @booking.end.strftime("%H:%M") %>
 </p>
 
 <% if current_user.present? %><%= link_to 'Edit', edit_booking_path(@booking) %> | <% end %>

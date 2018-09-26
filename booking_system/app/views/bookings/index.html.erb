@@ -10,7 +10,7 @@
     <div class="actions field">
       <%= form.submit "Select", method: :reload , :class => 'btn btn-lg btn-primary btn-signin date' %>
     </div>
-    <h3> <%= form.label Date.strptime(params[:date], "%Y-%m-%d" ).strftime("%A, %-d %B %Y") %> </h3>
+    <h3> <%= form.label Date.strptime(@date, "%Y-%m-%d" ).strftime("%A, %-d %B %Y") %> </h3>
     <% end %>
   </div>
   </div>
@@ -18,7 +18,7 @@
 
 
 <div class="col-md-11 table-responsive" id="calendarIndex">
-  <table class="table">
+  <table class="table table-sm">
     <thead>
       <th></th>
       <% @Rooms.each do |room| %>
@@ -28,16 +28,16 @@
   <tbody>
     <% @times.each_with_index do |time,i| %>
     <tr>
-      <td><%= time %></td>
+      <td><%= time[0...2]+":"+time[2...4] %></td>
       <% @Rooms.each do |room| %>
-        <% if room.isFree params[:date], time, @times[i+1]  %>
+        <% if room.isFree @date, time, @times[i+1]  %>
           <% if current_user.present? %>
             <td class="clickable" onclick="location.href='/bookings/new';"></td>
           <% else %>
             <td class="clickable"></td>
           <% end %>
         <% else %>
-          <% b_id = room.findBooking(params[:date], time, @times[i+1]) %>
+          <% b_id = room.findBooking(@date, time, @times[i+1]) %>
           <% this_booking = room.bookings.all.find(b_id) %>
           <td class="bg-warning clickable" onclick="location.href='/bookings/<%= this_booking.id %>';">
             <% text = this_booking.description %>
