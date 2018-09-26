@@ -17,7 +17,11 @@
       <td><%= time %></td>
       <% @Rooms.each do |room| %>
         <% if room.isFree '2018-10-01', time, @times[i+1]  %>
+        <% if current_user.present? %>
           <td onclick="location.href='/bookings/new';"></td>
+        <% else %>
+          <td></td>
+        <% end %>
         <% else %>
           <td class="bg-warning" onclick="location.href='/bookings/<%= room.bookings.all.first.id %>';">
             <% text = room.bookings.all.first.description %>
