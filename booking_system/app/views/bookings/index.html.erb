@@ -1,31 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<div class='container' id='booking_date_select'>
-  <div class ='row'>
-    <div class='col-3'>
-      <%= form_with(local: true, method: :get) do |form| %>
-      <div class='forms'>
-      <div class="field">
-        <h4> <%= form.label params[:date] %> </h4>
-        <%= form.date_field :date, {:class => 'form-control date'} %>
-        <br>
-        <div class="actions field">
-          <%= form.submit "Select", method: :reload , :class => 'btn btn-lg btn-primary btn-signin date' %>
-        </div>
-        <% end %>
-      </div>
-      </div>
+<div class='container text-center' id='booking_date_select'>
+  <h1 class="text-center">Room Allocation System</h1>
+
+  <%= form_with(local: true, method: :get) do |form| %>
+  <div class='forms'>
+  <div class="field indexInput">
+    <%= form.date_field :date, {:class => 'form-control date'} %>
+    <div class="actions field">
+      <%= form.submit "Select", method: :reload , :class => 'btn btn-lg btn-primary btn-signin date' %>
     </div>
-    <div class='col-9'>
-      <h1 class="text-center">Room Allocation System</h1>
-    </div>
+    <h3> <%= form.label params[:date] %> </h3>
+    <% end %>
+  </div>
   </div>
 </div>
 
 
-<br>
-<br>
-<div class="col-md-12 table-responsive">
+<div class="col-md-11 table-responsive" id="calendarIndex">
   <table class="table">
     <thead>
       <th></th>
@@ -40,14 +32,14 @@
       <% @Rooms.each do |room| %>
         <% if room.isFree params[:date], time, @times[i+1]  %>
           <% if current_user.present? %>
-            <td onclick="location.href='/bookings/new';"></td>
+            <td class="clickable" onclick="location.href='/bookings/new';"></td>
           <% else %>
-            <td></td>
+            <td class="clickable"></td>
           <% end %>
         <% else %>
           <% b_id = room.findBooking(params[:date], time, @times[i+1]) %>
           <% this_booking = room.bookings.all.find(b_id) %>
-          <td class="bg-warning" onclick="location.href='/bookings/<%= this_booking.id %>';">
+          <td class="bg-warning clickable" onclick="location.href='/bookings/<%= this_booking.id %>';">
             <% text = this_booking.description %>
             <% if text.length <= 15 %>
               <%= text %>

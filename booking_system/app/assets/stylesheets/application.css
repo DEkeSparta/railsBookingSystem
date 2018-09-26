@@ -44,15 +44,29 @@ table.table th, table.table td  {
     width: 10vw;
 }
 
-td:hover {
-    background-color: lightgrey;
-}
 
 .date {
   width: 175px;
 }
 
 #booking_date_select {
-  float: left;
-  padding-bottom: 10px;
+  margin:auto;
+}
+
+#calendarIndex{
+  margin:auto;
+}
+
+.clickable:hover{
+  cursor: pointer; 
+  background-color: lightgrey;
+}
+
+div.indexInput{
+  display:inline-block;
+  align-self: center;
+}
+
+div.indexInput>*{
+  margin-bottom:10px;
 }
