@@ -1,11 +1,11 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, only: [:new, :results, :edit, :create, :update, :destroy]
 
   # GET /bookings
   # GET /bookings.json
   def index
-    @times = ['0900','0930','1000','1030','1100','1130','1200','1230','1300','1330','1400','1430','1500','1600','1630','1700','1730']
+    @times = ['0900','0930','1000','1030','1100','1130','1200','1230','1300','1330','1400','1430','1500','1600','1630','1700','1730','1800','1830']
     @Rooms = Room.all
     @bookings = Booking.all
     if params[:booking]!=nil
