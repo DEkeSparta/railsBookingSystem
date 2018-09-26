@@ -35,8 +35,10 @@ table {
   overflow: hidden;
 }
 
-/* tr:hover {
-  background-color: #ffa;
+tr:hover {
+  /* background-color: #ffa; */
+  border-top:1px #666 double;
+  border-bottom:1px #666 double;
 }
 
 td, th {
@@ -46,13 +48,15 @@ td:hover::after,
 th:hover::after {
   content: "";
   position: absolute;
-  background-color: #ffa;
+  border-left:1px #666 solid;
+  border-right:1px #666 solid;
+  /* background-color: #ffa; */
   left: 0;
   top: -5000px;
   height: 10000px;
   width: 100%;
   z-index: -1;
-} */
+}
 
 .navbar-brand>img {
   height: 50px;
@@ -61,7 +65,7 @@ th:hover::after {
 
 table.table th, table.table td  {
     text-align: center;
-    border: 1px solid lightgrey;
+    border: 1px solid #ddd;
     width: 10vw;
 }
 
