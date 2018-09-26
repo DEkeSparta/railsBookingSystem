@@ -47,3 +47,12 @@ table.table th, table.table td  {
 td:hover {
     background-color: lightgrey;
 }
+
+.date {
+  width: 175px;
+}
+
+#booking_date_select {
+  float: left;
+  padding-bottom: 10px;
+}
