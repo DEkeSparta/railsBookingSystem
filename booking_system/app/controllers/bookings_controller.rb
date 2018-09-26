@@ -1,11 +1,10 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_time_and_category_arrays
 
   # GET /bookings
   # GET /bookings.json
   def index
-    @times = ['0900','0930','1000','1030','1100','1130','1200','1230','1300','1330','1400','1430','1500','1600','1630','1700','1730']
     @Rooms = Room.all
     @bookings = Booking.all
     if params[:booking]!=nil
@@ -94,6 +93,11 @@ class BookingsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_time_and_category_arrays
+      @times = ['0900','0930','1000','1030','1100','1130','1200','1230','1300','1330','1400','1430','1500','1600','1630','1700','1730']
+      @categories = ['Academy Visit','One-on-One','Training Session','Sparta Day','Client Interview','Sparta Day','Other']
+    end
+
     def set_booking
       @booking = Booking.find(params[:id])
     end
