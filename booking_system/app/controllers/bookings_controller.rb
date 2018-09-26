@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
   before_action :set_time_and_category_arrays
+  before_action :authenticate_user!, only: [:new, :results, :edit, :create, :update, :destroy]
 
   # GET /bookings
   # GET /bookings.json

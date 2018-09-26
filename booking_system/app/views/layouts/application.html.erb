@@ -29,7 +29,7 @@
         </div>
         <div class="navbar-nav ml-auto">
           <% if user_signed_in? %>
-            <a class="nav-link">Logged in as <strong><%= current_user.email %></strong></a>
+            <span>Logged in as <strong><%= current_user.email %></strong></span>
             <a class="nav-link"><%= link_to 'Edit Profile', edit_user_registration_path%></a>
             <a class="nav-link"><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></a>
           <% end %>
