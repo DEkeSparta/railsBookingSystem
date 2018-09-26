@@ -10,7 +10,7 @@
     <div class="actions field">
       <%= form.submit "Select", method: :reload , :class => 'btn btn-lg btn-primary btn-signin date' %>
     </div>
-    <h3> <%= form.label params[:date] %> </h3>
+    <h3> <%= form.label Date.strptime(params[:date], "%Y-%m-%d" ).strftime("%A, %-d %B %Y") %> </h3>
     <% end %>
   </div>
   </div>

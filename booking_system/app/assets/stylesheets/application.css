@@ -47,6 +47,7 @@ table.table th, table.table td  {
 
 .date {
   width: 175px;
+  margin:auto;
 }
 
 #booking_date_select {
@@ -58,7 +59,7 @@ table.table th, table.table td  {
 }
 
 .clickable:hover{
-  cursor: pointer; 
+  cursor: pointer;
   background-color: lightgrey;
 }
 
