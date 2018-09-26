@@ -1,0 +1,25 @@
+<div class="info">
+
+
+<h1>
+<%= @booking.description %>
+</h1>
+
+<p>
+<strong>Date:</strong>
+<%= @booking.date %>
+</p>
+
+<p>
+<strong>Start time:</strong>
+<%= @booking.start %>
+</p>
+
+<p>
+<strong>End time:</strong>
+<%= @booking.end %>
+</p>
+
+<% if current_user.present? %><%= link_to 'Edit', edit_booking_path(@booking) %> | <% end %>
+<%= link_to 'Back', bookings_path %>
+</div>

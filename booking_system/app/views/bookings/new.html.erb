@@ -1,0 +1,11 @@
+<div class="info">
+<h1 class="field">New Booking</h1>
+<br>
+
+
+<% if current_user.present? %>
+    <%= render 'form', booking: @booking %>
+<% end %>
+
+<%= link_to 'Back', bookings_path %>
+</div>

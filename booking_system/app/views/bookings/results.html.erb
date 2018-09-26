@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="card card-container">
+      <h1>New Booking</h1>  
+      <div class="searchBox">
+        <h3>Your input</h3>
+
+        <table>
+          <tr>
+            <td>Date:</td> <td> <%= @date %></td>
+          </tr>
+          <tr>
+            <td>Start Time:</td> <td> <%= @start_time[0...2] %>:<%= @start_time[2...4] %></td>
+          </tr>
+          <tr>
+            <td>End Time:</td> <td> <%= @end_time[0...2] %>:<%= @end_time[2...4] %></td>
+          </tr>
+        </table>
+        <br>
+        <h3>Available Rooms</h3>
+        <%= form_with(model: @booking, local: true, method: :create) do |form| %>
+          <% if @booking.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+
+              <ul>
+              <% @booking.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="field">
+            <%= form.label :available_rooms %><br>
+            <%= form.collection_select :room_id, @available_rooms, :id, :name, :class => 'form-control' %>
+          </div>
+          <br>  
+          <div class="field">
+              <%= form.label :description %><br>
+              <%= form.text_field :description, {:class => 'form-control'} %>
+          </div>
+          <br>
+          <%= form.hidden_field :date, :value => @date %>
+          <%= form.hidden_field :start, :value => Time.at(@start_time[0...2].to_i*3600 + @start_time[2...4].to_i*60) %>
+          <%= form.hidden_field :end, :value => Time.at(@end_time[0...2].to_i*3600 + @end_time[2...4].to_i*60) %>
+
+          <div class="actions">
+            <%= form.submit "Create Booking", {:class => 'btn btn-lg btn-primary btn-block btn-signin' } %>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
