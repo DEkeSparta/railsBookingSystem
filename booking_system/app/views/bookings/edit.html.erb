@@ -4,17 +4,19 @@
 <!-- <%= render 'form', booking: @booking %> -->
 
 <%= form_with(model: @booking, local: true) do |form| %>
-
-<div class="field">
-  <%= form.label :description %><br>
-  <%= form.text_field :description, id: :description, class: "form-control" %>
-</div>
-<br>
-<div class="actions">
-  <%= form.submit "Update Booking" , {:class => 'btn btn-lg btn-primary btn-block btn-signin'} %>
-</div>
-
-  <% end %>
+  <div class="field">
+    <%= form.label :category %><br>
+    <%= form.select :category, @categories, {:class => 'form-control'} %>
+  </div>
+  <div class="field">
+    <%= form.label :description %><br>
+    <%= form.text_field :description, id: :description, class: "form-control" %>
+  </div>
+  <br>
+  <div class="actions">
+    <%= form.submit "Update Booking" , {:class => 'btn btn-lg btn-primary btn-block btn-signin'} %>
+  </div>
+<% end %>
 
 
 <%= link_to 'Show', @booking %> |
