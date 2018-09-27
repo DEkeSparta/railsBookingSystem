@@ -15,12 +15,12 @@
     <br>
     <div class="field">
       <%= form.label :start_time %>
-      <%= form.time_select :start_time, {start_hour: 9, end_hour: 18, :minute_step => 30, :ampm => false}, {:onclick => "hideForm()", :default => {:hour => @start_time[0...2].to_i, :minute => @start_time[2...4].to_i}} %>
+      <%= form.time_select :start_time, {start_hour: 9, end_hour: 18, :minute_step => 30, :ampm => false, :default => {:hour => @start_time[0...2].to_i, :minute => @start_time[2...4].to_i}}, {:onclick => "hideForm()"} %>
     </div>
 
     <div class="field">
       <%= form.label :end_time %>&nbsp
-      <%= form.time_select :end_time, {start_hour: 9, end_hour: 18, :minute_step => 30, :ampm => false}, {:onclick => "hideForm()", :default => {:hour => @end_time[0...2].to_i, :minute => @end_time[2...4].to_i}} %>
+      <%= form.time_select :end_time, {start_hour: 9, end_hour: 18, :minute_step => 30, :ampm => false, :default => {:hour => @end_time[0...2].to_i, :minute => @end_time[2...4].to_i}}, {:onclick => "hideForm()"} %>
     </div>
     <br>
     <div class="actions field">
