@@ -132,3 +132,7 @@ div.indexInput>*{
 .bg-Other{
   background-color: #ccc;
 }
+
+.active-day {
+  color: green;
+}
