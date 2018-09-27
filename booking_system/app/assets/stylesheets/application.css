@@ -101,6 +101,25 @@ table.table th, table.table td  {
   box-shadow: 0 0 30px #fff inset;
 }
 
+div.resultsForm{
+  position:relative;
+}
+.hidden{
+  display:none;
+}
+div.formCoverUp{
+  position:absolute;
+  overflow: hidden;
+  height:100%;
+  width:100%;
+  box-sizing: border-box;
+  padding: 30% 10%;
+  font-size: 1.2rem;
+  text-align: center;
+  vertical-align: middle;
+  background-color: rgba(247,247,247,0.95);
+}
+
 div.indexInput{
   display:inline-block;
   align-self: center;
