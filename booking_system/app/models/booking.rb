@@ -9,5 +9,6 @@ class Booking < ApplicationRecord
       self.start.strftime("%H%M") < self.end.strftime("%H%M")
   end
 
+  
 
 end

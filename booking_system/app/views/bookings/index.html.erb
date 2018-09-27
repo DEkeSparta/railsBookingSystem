@@ -2,17 +2,27 @@
 
 <div class='container text-center' id='booking_date_select'>
   <h1 class="text-center">Room Allocation System</h1>
-
+  <hr/>
   <%= form_with(local: true, method: :get) do |form| %>
   <div class='forms'>
-  <div class="field indexInput">
-    <%= form.date_field :date, {:class => 'form-control date', :value => Date.strptime(@date, "%Y-%m-%d")} %>
-    <div class="actions field">
-      <%= form.submit "Select", method: :reload , :class => 'btn btn-lg btn-primary btn-signin date' %>
+    <div class="field indexInput">
+        <%= form.date_field :date, {:class => 'form-control date', :value => Date.strptime(@date, "%Y-%m-%d")} %>
+      <div class="actions field">
+        <%= form.submit "Select", method: :reload , :class => 'btn btn-lg btn-primary btn-signin date' %>
+      </div>
+
+      <h3>
+        <%= link_to image_tag("PrevButton.png", alt: "logo"), "/bookings?utf8=✓&date=#{(Date.strptime(@date, "%Y-%m-%d")).prev_day}&commit=Select" , class: "arrow_button" %>
+        <% if @date == Date.today.to_s%>
+          <%= form.label Date.strptime(@date, "%Y-%m-%d" ).strftime("%A %-d %B %Y"), :class => 'active-day' %>
+        <% else %>
+          <%= form.label Date.strptime(@date, "%Y-%m-%d" ).strftime("%A %-d %B %Y") %>
+        <% end %>
+        <%= link_to image_tag("NextButton.png", alt: "logo"), "/bookings?utf8=✓&date=#{(Date.strptime(@date, "%Y-%m-%d")).next_day}&commit=Select", class: "arrow_button"  %>
+      </h3>
+
+      <% end %>
     </div>
-    <h3> <%= form.label Date.strptime(@date, "%Y-%m-%d" ).strftime("%A, %-d %B %Y") %> </h3>
-    <% end %>
-  </div>
   </div>
 </div>
 
@@ -51,7 +61,11 @@
       <% end %>
     </tr>
     <% end %>
+
   </table>
+</div>
+
+<div class='container text-center' id='next_previous_page'>
 </div>
 
 <br>
