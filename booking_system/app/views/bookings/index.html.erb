@@ -39,7 +39,7 @@
         <% else %>
           <% b_id = room.findBooking(@date, time, @times[i+1]) %>
           <% this_booking = room.bookings.all.find(b_id) %>
-          <td class="bg-warning clickable" onclick="location.href='/bookings/<%= this_booking.id %>';">
+          <td class="bg-<%= this_booking.category.split(" ").join("_") %> clickable" onclick="location.href='/bookings/<%= this_booking.id %>';">
             <% text = this_booking.description %>
             <% if text.length <= 15 %>
               <%= text %>
