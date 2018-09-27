@@ -36,7 +36,7 @@
       <% end %>
     </thead>
   <tbody>
-    <% @times.each_with_index do |time,i| %>
+    <% @times[0...-1].each_with_index do |time,i| %>
     <tr>
       <td><%= time[0...2]+":"+time[2...4] %></td>
       <% @Rooms.each do |room| %>
