@@ -96,7 +96,9 @@ table.table th, table.table td  {
 
 .clickable:hover{
   cursor: pointer;
-  background-color: lightgrey;
+  background-color: #444;
+  color: #fff;
+  box-shadow: 0 0 30px #fff inset;
 }
 
 div.indexInput{
@@ -106,4 +108,27 @@ div.indexInput{
 
 div.indexInput>*{
   margin-bottom:10px;
+}
+
+/* ====== Background Table Coloring ============ */
+.bg-Academy_Visit{
+  background-color: #fcc;
+}
+.bg-One-on-One{
+  background-color: #cfc;
+}
+.bg-Training_Session{
+  background-color: #ccf;
+}
+.bg-Sparta_Day{
+  background-color: #ffc;
+}
+.bg-Client_Interview{
+  background-color: #fcf;
+}
+.bg-Sparta_Day_Interview{
+  background-color: #cff;
+}
+.bg-Other{
+  background-color: #ccc;
 }
