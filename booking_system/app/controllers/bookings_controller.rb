@@ -24,6 +24,11 @@ class BookingsController < ApplicationController
 
   end
 
+  def requests
+    @requests = Request.all
+  end
+
+
   # GET /bookings/new
   def new
     @booking = Booking.new
