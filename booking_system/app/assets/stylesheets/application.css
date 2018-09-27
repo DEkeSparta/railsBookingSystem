@@ -78,6 +78,14 @@ table.table th, table.table td  {
   margin:auto;
 }
 
+.arrow_button img{
+  width: 30px;
+}
+
+.arrow_button{
+  margin: 0px 20px;
+}
+
 #booking_date_select {
   margin:auto;
 }
