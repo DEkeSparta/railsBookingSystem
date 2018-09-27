@@ -1,0 +1,25 @@
+<div class='info'>
+<h1 class="text-center">Editing Booking</h1>
+
+<!-- <%= render 'form', booking: @booking %> -->
+
+<%= form_with(model: @booking, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :category %><br>
+    <%= form.select :category, @categories, {:class => 'form-control'} %>
+  </div>
+  <div class="field">
+    <%= form.label :description %><br>
+    <%= form.text_field :description, id: :description, class: "form-control" %>
+  </div>
+  <br>
+  <div class="actions">
+    <%= form.submit "Update Booking" , {:class => 'btn btn-lg btn-primary btn-block btn-signin'} %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Show', @booking %> |
+<% if current_user.present? %><%= link_to 'Destroy', @booking, method: :delete, data: { confirm: 'Are you sure?' } %> |<% end %>
+<%= link_to 'Back', bookings_path %>
+</div>

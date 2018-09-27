@@ -1,0 +1,71 @@
+<p id="notice"><%= notice %></p>
+
+<div class='container text-center' id='booking_date_select'>
+  <h1 class="text-center">Room Allocation System</h1>
+  <hr/>
+  <%= form_with(local: true, method: :get) do |form| %>
+  <div class='forms'>
+    <div class="field indexInput">
+        <%= form.date_field :date, {:class => 'form-control date', :value => Date.strptime(@date, "%Y-%m-%d")} %>
+      <div class="actions field">
+        <%= form.submit "Select", method: :reload , :class => 'btn btn-lg btn-primary btn-signin date' %>
+      </div>
+
+      <h3>
+        <%= link_to image_tag("PrevButton.png", alt: "logo"), "/bookings?utf8=✓&date=#{(Date.strptime(@date, "%Y-%m-%d")).prev_day}&commit=Select" , class: "arrow_button" %>
+        <% if @date == Date.today.to_s%>
+          <span class='active-day'><%= Date.strptime(@date, "%Y-%m-%d" ).strftime("%A %-d %B %Y") %></span>
+        <% else %>
+          <%= Date.strptime(@date, "%Y-%m-%d" ).strftime("%A %-d %B %Y") %>
+        <% end %>
+        <%= link_to image_tag("NextButton.png", alt: "logo"), "/bookings?utf8=✓&date=#{(Date.strptime(@date, "%Y-%m-%d")).next_day}&commit=Select", class: "arrow_button"  %>
+      </h3>
+
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<div class="col-md-11 table-responsive" id="calendarIndex">
+  <table class="table table-sm">
+    <thead>
+      <th></th>
+      <% @Rooms.each do |room| %>
+        <th><%= room.name %></th>
+      <% end %>
+    </thead>
+  <tbody>
+    <% @times.each_with_index do |time,i| %>
+    <tr>
+      <td><%= time[0...2]+":"+time[2...4] %></td>
+      <% @Rooms.each do |room| %>
+        <% if room.isFree @date, time, @times[i+1]  %>
+          <% if current_user.present? %>
+            <td class="clickable" onclick="location.href='/bookings/new/&f=<%= "#{time}&l=#{@times[i+1]}&d=#{@date}" %>';"></td>
+          <% else %>
+            <td class="clickable"></td>
+          <% end %>
+        <% else %>
+          <% b_id = room.findBooking(@date, time, @times[i+1]) %>
+          <% this_booking = room.bookings.all.find(b_id) %>
+          <td class="bg-<%= this_booking.category.split(" ").join("_") %> clickable" onclick="location.href='/bookings/<%= this_booking.id %>';">
+            <% text = this_booking.description %>
+            <% if text.length <= 15 %>
+              <%= text %>
+            <% else %>
+              <%= "#{text[0...12]}..." %>
+            <% end %>
+          </td>
+        <% end %>
+      <% end %>
+    </tr>
+    <% end %>
+
+  </table>
+</div>
+
+<div class='container text-center' id='next_previous_page'>
+</div>
+
+<br>

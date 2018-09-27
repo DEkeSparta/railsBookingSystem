@@ -14,3 +14,10 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+function hideForm(){
+  forms = document.getElementsByClassName("formCoverUp");
+  for(let f of forms){
+    f.classList.remove("hidden")
+  }
+}

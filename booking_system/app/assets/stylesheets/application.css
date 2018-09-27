@@ -13,3 +13,145 @@
  *= require_tree .
  *= require_self
  */
+.info{
+  /* Margin:0 auto;
+  Display: block; */
+  /* text-align: center; */
+  margin-left: 38%;
+  background-color: #F7F7F7;
+  width: 400px;
+  padding: 20px 25px 30px; */
+  margin: 0 auto 25px; */
+  margin-top: 50px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 7px;
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+table {
+  overflow: hidden;
+}
+
+tr:hover {
+  /* background-color: #ffa; */
+  border-top:1px #666 double;
+  border-bottom:1px #666 double;
+}
+
+td, th {
+  position: relative;
+}
+td:hover::after,
+th:hover::after {
+  content: "";
+  position: absolute;
+  border-left:1px #666 solid;
+  border-right:1px #666 solid;
+  /* background-color: #ffa; */
+  left: 0;
+  top: -5000px;
+  height: 10000px;
+  width: 100%;
+  z-index: -1;
+}
+
+.navbar-brand>img {
+  height: 50px;
+  width: auto;
+}
+
+table.table th, table.table td  {
+    text-align: center;
+    border: 1px solid #ddd;
+    width: 10vw;
+}
+
+.myNavbar   {
+    background-color: #e3e3e3;
+ }
+
+.date {
+  width: 175px;
+  margin:auto;
+}
+
+.arrow_button img{
+  width: 30px;
+}
+
+.arrow_button{
+  margin: 0px 20px;
+}
+
+#booking_date_select {
+  margin:auto;
+}
+
+#calendarIndex{
+  margin:auto;
+}
+
+.clickable:hover{
+  cursor: pointer;
+  background-color: #444;
+  color: #fff;
+  box-shadow: 0 0 30px #fff inset;
+}
+
+div.resultsForm{
+  position:relative;
+}
+.hidden{
+  display:none;
+}
+div.formCoverUp{
+  position:absolute;
+  overflow: hidden;
+  height:100%;
+  width:100%;
+  box-sizing: border-box;
+  padding: 30% 10%;
+  font-size: 1.2rem;
+  text-align: center;
+  vertical-align: middle;
+  background-color: rgba(247,247,247,0.95);
+}
+
+div.indexInput{
+  display:inline-block;
+  align-self: center;
+}
+
+div.indexInput>*{
+  margin-bottom:10px;
+}
+
+/* ====== Background Table Coloring ============ */
+.bg-Academy_Visit{
+  background-color: #fcc;
+}
+.bg-One-on-One{
+  background-color: #cfc;
+}
+.bg-Training_Session{
+  background-color: #ccf;
+}
+.bg-Sparta_Day{
+  background-color: #ffc;
+}
+.bg-Client_Interview{
+  background-color: #fcf;
+}
+.bg-Sparta_Day_Interview{
+  background-color: #cff;
+}
+.bg-Other{
+  background-color: #ccc;
+}
+
+.active-day {
+  color: green;
+}
