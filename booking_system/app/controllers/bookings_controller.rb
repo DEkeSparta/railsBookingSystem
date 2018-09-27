@@ -65,6 +65,8 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @booking = Booking.new(new_booking_params)
+    @start_time = @booking.start.strftime("%H%M")
+    @end_time = @booking.end.strftime("%H%M")
 
     respond_to do |format|
       if @booking.save
