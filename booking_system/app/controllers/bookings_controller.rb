@@ -29,6 +29,10 @@ class BookingsController < ApplicationController
     @booking = Booking.new
     @bookings = Booking.all
     @rooms = Room.all
+
+    @start_time = "0900"
+    @end_time = "1830"
+    @date = Date.today.strftime("%Y-%m-%d")
   end
 
   def results
@@ -100,7 +104,7 @@ class BookingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_time_and_category_arrays
-      @times = ['0900','0930','1000','1030','1100','1130','1200','1230','1300','1330','1400','1430','1500','1600','1630','1700','1730']
+      @times = ['0900','0930','1000','1030','1100','1130','1200','1230','1300','1330','1400','1430','1500','1530','1600','1630','1700','1730','1800']
       @categories = ['Academy Visit','One-on-One','Training Session','Sparta Day','Client Interview','Sparta Day Interview','Other']
     end
 
