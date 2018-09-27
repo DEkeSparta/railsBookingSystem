@@ -6,7 +6,7 @@
   <%= form_with(local: true, method: :get) do |form| %>
   <div class='forms'>
   <div class="field indexInput">
-    <%= form.date_field :date, {:class => 'form-control date'} %>
+    <%= form.date_field :date, {:class => 'form-control date', :value => Date.strptime(@date, "%Y-%m-%d")} %>
     <div class="actions field">
       <%= form.submit "Select", method: :reload , :class => 'btn btn-lg btn-primary btn-signin date' %>
     </div>
