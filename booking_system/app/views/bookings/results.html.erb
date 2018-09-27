@@ -3,18 +3,8 @@
       <h1 class="text-center">New Booking</h1>
       <div class="searchBox">
         <h3>Your input</h3>
+        <%= render 'form', booking: @booking %>
 
-        <table>
-          <tr>
-            <td>Date:</td> <td> <%= @date %></td>
-          </tr>
-          <tr>
-            <td>Start Time:</td> <td> <%= @start_time[0...2] %>:<%= @start_time[2...4] %></td>
-          </tr>
-          <tr>
-            <td>End Time:</td> <td> <%= @end_time[0...2] %>:<%= @end_time[2...4] %></td>
-          </tr>
-        </table>
         <br>
         <h3>Available Rooms</h3>
         <%= form_with(model: @booking, local: true, method: :create) do |form| %>

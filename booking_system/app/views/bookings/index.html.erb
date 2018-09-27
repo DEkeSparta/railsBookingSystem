@@ -32,7 +32,7 @@
       <% @Rooms.each do |room| %>
         <% if room.isFree @date, time, @times[i+1]  %>
           <% if current_user.present? %>
-            <td class="clickable" onclick="location.href='/bookings/new';"></td>
+            <td class="clickable" onclick="location.href='/bookings/new/&f=<%= "#{time}&l=#{@times[i+1]}&d=#{@date}" %>';"></td>
           <% else %>
             <td class="clickable"></td>
           <% end %>

@@ -10,21 +10,21 @@
   <div class='forms'>
     <div class="field">
       <%= form.label :date %>
-      <%= form.date_field :date, {:class => 'form-control'} %>
+      <%= form.date_field :date, {:class => 'form-control', :value => @date} %>
     </div>
     <br>
     <div class="field">
       <%= form.label :start_time %>
-      <%= form.time_select :start_time ,start_hour: 9, end_hour: 18, :minute_step => 30, :ampm => false, :class => 'form-control' %>
+      <%= form.time_select :start_time ,start_hour: 9, end_hour: 18, :minute_step => 30, :ampm => false, :class => 'form-control', :default => {:hour => @start_time[0...2].to_i, :minute => @start_time[2...4].to_i} %>
     </div>
 
     <div class="field">
       <%= form.label :end_time %>&nbsp
-      <%= form.time_select :end_time ,start_hour: 9, end_hour: 18, :minute_step => 30, :ampm => false, :class => 'form-control' %>
+      <%= form.time_select :end_time ,start_hour: 9, end_hour: 18, :minute_step => 30, :ampm => false, :class => 'form-control', :default => {:hour => @end_time[0...2].to_i, :minute => @end_time[2...4].to_i} %>
     </div>
     <br>
     <div class="actions field">
-      <%= form.submit "Submit", method: :search , :class => 'btn btn-lg btn-primary btn-block btn-signin' %>
+      <%= form.submit "Search Rooms", method: :search , :class => 'btn btn-lg btn-primary btn-block btn-signin' %>
     </div>
   </div>
 <% end %>
