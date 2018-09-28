@@ -58,10 +58,37 @@ th:hover::after {
   z-index: -1;
 }
 
-.navbar-brand>img {
-  height: 50px;
-  width: auto;
+/* ========== Navigation Bar ============ */
+
+nav{
+  display:flex;
+  justify-content: space-between;
+  background-color: #ddd;
+  align-items: center;
 }
+
+nav a{
+  display:inline-block;
+  padding:0.75em;
+}
+nav a:hover{
+  background: linear-gradient(180deg, #ccc 0%, #bbb 20%, #aaa 80%, #999 100%);
+  text-decoration: none;
+  text-shadow: 0 0 5px #fff, 0 0 5px #fff;
+}
+
+.navImg{
+  padding:0;
+  margin:0 5px;
+  margin-top:-5px;
+  vertical-align: middle;
+  border-radius: 20px;
+}
+.navImg img{
+  height:40px;
+}
+
+/* ========================== */
 
 table.table th, table.table td  {
     text-align: center;
@@ -69,9 +96,6 @@ table.table th, table.table td  {
     width: 10vw;
 }
 
-.myNavbar   {
-    background-color: #e3e3e3;
- }
 
 .date {
   width: 175px;
@@ -80,6 +104,12 @@ table.table th, table.table td  {
 
 .arrow_button img{
   width: 30px;
+  transition-duration: 0.2s;
+  border-radius: 50%;
+}
+.arrow_button img:hover{
+  transform: scale(1.2);
+  box-shadow: 0 0 10px #00f;
 }
 
 .arrow_button{
