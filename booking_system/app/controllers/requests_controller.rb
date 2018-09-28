@@ -62,19 +62,38 @@ class RequestsController < ApplicationController
   end
 
   def add_request_to_list_of_bookings
-    @request = Request.new(new_request_params)
-    @start_time = @request.start.strftime("%H%M")
-    @end_time = @request.end.strftime("%H%M")
+    @booking = Booking.new
+    @bookings = Booking.all
+    @requests = Request.all
+    @request = Request.find(params[:id])
 
-    respond_to do |format|
-      if @request.save
-        format.html { redirect_to @request, notice: 'request was successfully created.' }
-        format.json { render :show, status: :created, location: @request }
-      else
-        format.html { render :new }
-        format.json { render json: @request.errors, status: :unprocessable_entity }
+    if @request.room.isFree(@request.date, @request.start, @request.end)
+
+      @booking.room_id = @request.room_id
+      @booking.description = @request.description
+      @booking.date = @request.date
+      @booking.start = @request.start
+      @booking.end = @request.end
+      @booking.category = @request.category
+
+      @start_time = @booking.start.strftime("%H%M")
+      @end_time = @booking.end.strftime("%H%M")
+
+      respond_to do |format|
+        if @booking.save
+          format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
+          format.json { render :show, status: :created, location: @booking }
+        else
+          format.html { render :new }
+          format.json { render json: @booking.errors, status: :unprocessable_entity }
+        end
       end
+
+      @request.destroy
+    else
+      redirect_to "http://google.com"
     end
+
   end
 
   private
@@ -85,7 +104,7 @@ class RequestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def request_params
-      params.require(:request).permit(:room_id, :description, :date, :start, :end, :created_at, :updated_at, :category, :pending)
+      params.require(:request).permit(:room_id, :description, :date, :start, :end, :category)
     end
 
 
