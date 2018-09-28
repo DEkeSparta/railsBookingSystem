@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
   before_action :set_time_and_category_arrays
-  before_action :authenticate_user!, only: [:new, :results, :edit, :create, :update, :destroy]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
   # GET /bookings
   # GET /bookings.json
@@ -23,6 +23,11 @@ class BookingsController < ApplicationController
   def show
 
   end
+
+  def requests
+    @requests = Request.all
+  end
+
 
   # GET /bookings/new
   def new
@@ -64,18 +69,35 @@ class BookingsController < ApplicationController
   # POST /bookings
   # POST /bookings.json
   def create
-    @booking = Booking.new(new_booking_params)
-    @start_time = @booking.start.strftime("%H%M")
-    @end_time = @booking.end.strftime("%H%M")
+    if user_signed_in?
+      @booking = Booking.new(new_booking_params)
+      @start_time = @booking.start.strftime("%H%M")
+      @end_time = @booking.end.strftime("%H%M")
 
-    respond_to do |format|
-      if @booking.save
-        format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
-        format.json { render :show, status: :created, location: @booking }
-      else
-        format.html { render :new }
-        format.json { render json: @booking.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @booking.save
+          format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
+          format.json { render :show, status: :created, location: @booking }
+        else
+          format.html { render :new }
+          format.json { render json: @booking.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      @request = Request.new(new_booking_params)
+      @start_time = @request.start.strftime("%H%M")
+      @end_time = @request.end.strftime("%H%M")
+
+      respond_to do |format|
+        if @request.save
+          format.html { redirect_to bookings_path, notice: 'Request was successfully created.' }
+          format.json { render :index, status: :created, location: @request }
+        else
+          format.html { render :new }
+          format.json { render json: @request.errors, status: :unprocessable_entity }
+        end
+      end
+
     end
   end
 
@@ -102,6 +124,7 @@ class BookingsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

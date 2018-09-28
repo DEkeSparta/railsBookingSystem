@@ -2,7 +2,7 @@
 
 <div class='container text-center' id='booking_date_select'>
   <h1 class="text-center">Room Allocation System</h1>
-  <hr/>
+
   <%= form_with(local: true, method: :get) do |form| %>
   <div class='forms'>
     <div class="field indexInput">
@@ -28,7 +28,7 @@
 
 
 <div class="col-md-11 table-responsive" id="calendarIndex">
-  <table class="table table-sm">
+  <table class="table table-sm" id="bookingsTable">
     <thead>
       <th></th>
       <% @Rooms.each do |room| %>
@@ -61,11 +61,7 @@
       <% end %>
     </tr>
     <% end %>
-
   </table>
-</div>
-
-<div class='container text-center' id='next_previous_page'>
 </div>
 
 <br>
