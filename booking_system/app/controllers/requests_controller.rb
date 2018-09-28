@@ -62,7 +62,19 @@ class RequestsController < ApplicationController
   end
 
   def add_request_to_list_of_bookings
-    puts "testing1243"
+    @request = Request.new(new_request_params)
+    @start_time = @request.start.strftime("%H%M")
+    @end_time = @request.end.strftime("%H%M")
+
+    respond_to do |format|
+      if @request.save
+        format.html { redirect_to @request, notice: 'request was successfully created.' }
+        format.json { render :show, status: :created, location: @request }
+      else
+        format.html { render :new }
+        format.json { render json: @request.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private

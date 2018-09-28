@@ -30,7 +30,7 @@
         <td><%= request.updated_at %></td>
         <td><%= request.category %></td>
         <td><%= request.pending %></td>
-        <td><%= link_to 'Accept', bookings_accept_path  %></td>
+        <td><%= link_to 'Accept', requests_accept_path  %></td>
 
         <td><%= link_to 'Decline', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
