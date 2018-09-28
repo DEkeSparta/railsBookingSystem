@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   get '/bookings/new/&f=:start_time&l=:end_time&d=', to: 'bookings#new'
 get '/requests', to: 'bookings#requests'
 
+get '/requests', to: 'bookings#requests'
+get 'bookings/accept', to: 'bookings#add_request_to_list_of_bookings'
+
   root to: "bookings#index"
 
 
