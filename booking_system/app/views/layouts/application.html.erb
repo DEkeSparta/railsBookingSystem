@@ -17,6 +17,10 @@
         <% if user_signed_in? %>
           <%= link_to "Bookings", bookings_path%>
           <%= link_to "New Booking", new_booking_path%>
+          <%= link_to "Requests", requests_path%>
+          <% if Request.all.length > 0 %>
+            <div id="numRequests"> <%= Request.all.length %> </div>
+          <% end %>
         <% else %>
           <%#= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %>
           <%= link_to "Login", new_user_session_path, :class => '' %>
