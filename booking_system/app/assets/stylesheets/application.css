@@ -169,6 +169,18 @@ div.indexInput>*{
   margin-bottom:10px;
 }
 
+#reqTitle{
+  text-align: center;
+  margin-bottom: 50px;
+}
+#requestsTable{
+  margin:auto;
+}
+#requestsTable td, #requestsTable th{
+  padding:5px;
+  border:1px solid #bbb;
+}
+
 /* ====== Background Table Coloring ============ */
 .bg-Academy_Visit{
   background-color: #fcc;

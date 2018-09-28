@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Requests</h1>
+<h1 id="reqTitle">Requests</h1>
 
-<table>
+<table id="requestsTable">
   <thead>
     <tr>
       <th>Room</th>
@@ -10,10 +10,8 @@
       <th>Date</th>
       <th>Start</th>
       <th>End</th>
-      <th>Created at</th>
-      <th>Updated at</th>
+      <th>Time/Date Requested</th>
       <th>Category</th>
-      <th>Pending</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,15 +19,13 @@
   <tbody>
     <% @requests.each do |request| %>
       <tr>
-        <td><%= request.room_id %></td>
+        <td><%= request.room.name %></td>
         <td><%= request.description %></td>
-        <td><%= request.date %></td>
-        <td><%= request.start %></td>
-        <td><%= request.end %></td>
-        <td><%= request.created_at %></td>
-        <td><%= request.updated_at %></td>
+        <td><%= request.date.strftime("%A %-d %B %Y") %></td>
+        <td><%= "#{request.start.strftime("%H%M")[0...2]}:#{request.start.strftime("%H%M")[2...4]}" %></td>
+        <td><%= "#{request.end.strftime("%H%M")[0...2]}:#{request.end.strftime("%H%M")[2...4]}" %></td>
+        <td><%= request.created_at.strftime("%H%M, %A %-d %B %Y") %></td>
         <td><%= request.category %></td>
-        <td><%= request.pending %></td>
         <td><%= link_to 'Accept', request, method: :add_request_to_list_of_bookings  %></td>
 
         <td><%= link_to 'Decline', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -37,7 +33,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Request', new_request_path %>

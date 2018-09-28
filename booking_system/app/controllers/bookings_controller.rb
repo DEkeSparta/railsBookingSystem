@@ -90,13 +90,14 @@ class BookingsController < ApplicationController
 
       respond_to do |format|
         if @request.save
-          format.html { redirect_to @request, notice: 'Request was successfully created.' }
-          format.json { render :show, status: :created, location: @request }
+          format.html { redirect_to bookings_path, notice: 'Request was successfully created.' }
+          format.json { render :index, status: :created, location: @request }
         else
           format.html { render :new }
           format.json { render json: @request.errors, status: :unprocessable_entity }
         end
       end
+
     end
   end
 
