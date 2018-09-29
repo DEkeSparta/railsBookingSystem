@@ -85,6 +85,7 @@ class BookingsController < ApplicationController
       end
     else
       @request = Request.new(new_booking_params)
+      @booking = @request
       @start_time = @request.start.strftime("%H%M")
       @end_time = @request.end.strftime("%H%M")
 
@@ -94,7 +95,7 @@ class BookingsController < ApplicationController
           format.json { render :index, status: :created, location: @request }
         else
           format.html { render :new }
-          format.json { render json: @request.errors, status: :unprocessable_entity }
+          format.json { render json: @booking.errors, status: :unprocessable_entity }
         end
       end
 
