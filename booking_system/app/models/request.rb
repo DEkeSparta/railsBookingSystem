@@ -1,4 +1,4 @@
-class Booking < ApplicationRecord
+class Request < ApplicationRecord
   belongs_to :room
 
   validates :description, presence: true, allow_blank: false
@@ -9,6 +9,6 @@ class Booking < ApplicationRecord
       self.start.strftime("%H%M") < self.end.strftime("%H%M")
   end
 
-  
+
 
 end

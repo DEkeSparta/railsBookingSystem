@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Room:</strong>
+  <%= @request.room_id %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @request.description %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @request.date %>
+</p>
+
+<p>
+  <strong>Start:</strong>
+  <%= @request.start %>
+</p>
+
+<p>
+  <strong>End:</strong>
+  <%= @request.end %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= @request.created_at %>
+</p>
+
+<p>
+  <strong>Updated at:</strong>
+  <%= @request.updated_at %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @request.category %>
+</p>
+
+<p>
+  <strong>Pending:</strong>
+  <%= @request.pending %>
+</p>
+
+<%= link_to 'Edit', edit_request_path(@request) %> |
+<%= link_to 'Back', requests_path %>

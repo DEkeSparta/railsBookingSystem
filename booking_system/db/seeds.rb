@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Room.create(name: 'Tetris', capacity: 8, details: 'a nice room')
+Room.create(name: 'Mario', capacity: 8, details: 'a nice room')
+Room.create(name: 'Cortana', capacity: 8, details: 'a nice room')
+Room.create(name: 'Frogger', capacity: 8, details: 'a nice room')
+Room.create(name: 'Zelda', capacity: 8, details: 'a nice room')
+Room.create(name: 'BreakOut', capacity: 8, details: 'a nice room')
+Room.create(name: 'Pacman', capacity: 8, details: 'a nice room')
+Room.create(name: 'Office', capacity: 8, details: 'a nice room')
+
+Booking.create(room_id: 1, description: 'Sparta Standup', date: "2018-10-01", start: "2000-01-01 13:30", end: "2000-01-01 15:00", category: "Other")
+
+User.create(email: 'kescrader@spartaglobal.com', password: 'password')
+
+Request.create(room_id: 2, description: 'Sparta Standup', date: "2018-10-01", start: "2000-01-01 13:30", end: "2000-01-01 15:00", category: 'Other', pending: false)
+
+Request.create(room_id: 3, description: 'Meeting with Halil', date: "2018-11-01", start: "2000-01-01 13:30", end: "2000-01-01 15:00", category: 'Other', pending: false)
